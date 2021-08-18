@@ -1,0 +1,242 @@
+% !TeX document-id = {f660d16e-6a54-4448-a094-8eee8f6c3894}
+% !TeX program = lualatex
+% !BIB program = biber
+% !TeX spellcheck = en_UK
+% !TeX encoding = utf8
+% !TeX root = ClaudioDiCiccio-CV.tex
+%
+\documentclass[10pt,a4paper]{article}
+
+\makeatletter
+\def\@maketitle{%
+	\newpage
+	\null
+%	\vskip 2em%
+	\begin{center}%
+		\vskip -2.5cm
+		{\raggedleft \huge \@author \par}%
+		\vskip -2ex%
+		\rule{\textwidth}{0.1ex}  \par%
+		{%\large
+%			\lineskip .5em%
+			{\raggedright \Large \@title \par}%
+%			\begin{tabular}[t]{c}%
+%				\@author
+%			\end{tabular}\par
+		}%
+		\vskip 1em%
+		%{\large \@date}%
+	\end{center}%
+}
+\makeatother
+
+\author{\textcolor{darkgray}{Claudio} Di Ciccio}
+\title{Curriculum Vitae et Studiorum}
+
+% This variable is used to hide (if true) private details such as the home address or phone number
+\newif\ifpubliccv
+%\publiccvfalse
+\publiccvtrue
+
+% Managing the bib entries
+\usepackage[utf8]{inputenc}    % utf8 support
+\usepackage[T1]{fontenc}       % code for pdf file
+\usepackage{csquotes}
+\usepackage[backend=biber,style=numeric,sorting=none,maxbibnames=64,maxcitenames=64,hyperref]{biblatex}
+\addbibresource{bib/DiCiccio.export.bib}
+
+\usepackage[left=1.25cm, right=1.25cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+% For the letter-like symbol, {\Letter}
+\usepackage{fontawesome}
+\usepackage{paralist}
+\usepackage[colorlinks=true,hyperfootnotes=true, hyperindex=true,
+plainpages=false, pagebackref=false, pdfpagelabels=true, pdfstartview=FitH,
+linkcolor=darkgray, citecolor=darkgray, urlcolor=darkgray,
+bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
+\usepackage{comment}
+\usepackage{multicol}
+\usepackage{academicons}
+% Academicons has no icon for Scopus, so I make it up!
+\def\SimScopusIcon{\colorbox{black!32}{\makebox(5,6){\tiny{\color{white}\textsf{SC}}}}}
+
+
+\usepackage{fancyhdr}
+\usepackage[dvipsnames,usenames]{xcolor}
+\usepackage{lastpage}
+\pagestyle{fancyplain}
+
+% For side notes, missing figures and inline to-do's
+\usepackage[textsize=scriptsize,backgroundcolor=yellow!40]{todonotes}
+
+% To create good-looking book-style tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{threeparttable}
+
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{10pt}{5pt}
+\titlespacing{\subsection}{0pt}{2pt}{*0}
+\titlespacing{\subsubsection}{0pt}{1pt}{*0}
+\setlength{\parindent}{0.025\textwidth}
+\setlength{\parskip}{2pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{5pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+
+\fancyhf{}
+\rfoot{Page {\thepage} of \pageref{LastPage}}
+
+\input{addon/bib-altering-macros}
+
+\input{addon/cv-entry-fields-macros}
+
+\input{addon/fancy-url-macros}
+%
+
+
+\begin{document}
+%
+\maketitle
+%
+\input{bib/articles.ids.tex}
+\input{bib/conf.ids.tex}
+\input{bib/techrep.ids.tex}
+\input{bib/edited.ids.tex}
+%
+\section*{Personal Data}
+\CvEntryLblB{Name}%
+\CvEntryDesc{Claudio Di Ciccio}%
+
+\ifpubliccv \else
+	\CvEntryLblB{Birth}%
+	\CvEntryDesc{DD Month YYYY in City (Province or State), Country}%
+\fi%
+
+\CvEntryLblB{Citizenship}%
+\CvEntryDesc{Italian}%
+
+\CvEntryLblB{Address}%
+\CvEntryDesc{%
+	\CvEntrySubPerson{{\faHome}~\textbf{Personal}
+		\newline%
+		\ifpubliccv ~ \else Street name, number \\ ZIP City (Province or State), Country \fi%
+	}%
+	\CvEntrySubWork{{\faUniversity}~\textbf{Work}
+		\newline
+		Sapienza University of Rome \\ Department of Computer Science \\ Viale Regina Elena 295, 00161 Rome, Italy}%
+}%
+
+\CvEntryLblB{Telephone}%
+\CvEntryDesc{%
+	\CvEntrySubPerson{\ifpubliccv ~ \else \CvPhoneUrl{+43 123 4567 890} \fi}%
+	\CvEntrySubWork{ \CvPhoneUrl{+39 06 4991 8465} }%
+}%
+
+\CvEntryLblB{Website}%
+\CvEntryDesc{%
+	\CvEntrySubPerson{\CvWebUrl{http://diciccio.net}{diciccio.net}}%
+	\CvEntrySubWork{\CvWebUrl{https://www.di.uniroma1.it/en/docenti/di-ciccio-claudio}{di.uniroma1.it/en/docenti/di-ciccio-claudio}}%
+}%
+
+\CvEntryLblB{E-mail}%
+\CvEntryDesc{%
+	\CvEntrySubPerson{\CvMailUrl{claudio@diciccio.net}}%
+	\CvEntrySubWork{\CvMailUrl{claudio.diciccio@uniroma1.it}}%
+}%
+
+\section*{Education}
+\input{sections/cv-education}
+
+\section*{Qualifications}
+\input{sections/cv-qualifications}
+
+\section*{Professional Experience}
+\input{sections/cv-experience}
+
+\section*{Honours and Awards}
+\input{sections/cv-awards}
+
+
+
+
+
+
+
+
+
+\newpage
+\rhead{Claudio Di Ciccio}
+\lfoot{Curriculum Vitae et Studiorum}
+
+
+
+
+\section*{Invited Talks}%
+\input{sections/cv-invitedtalks}
+
+\section*{Presentations at Conferences and Workshops}%
+\input{sections/cv-presentations}
+
+\section*{Program Committees and Referrals}%
+\input{sections/cv-pc-referrals}
+
+\section*{Memberships}%
+\input{sections/cv-memberships}
+
+\section*{National and International Projects}%
+\input{sections/cv-projects}
+
+\section*{National and International Appointments}%
+\input{sections/cv-appointments}
+
+\section*{Technological Transfer and Entrepreneurship}%
+\input{sections/cv-transfer}
+
+\section*{Teaching Experience}%
+\input{sections/cv-teaching}
+
+\section*{Supervision}%
+\input{sections/cv-supervisions}
+
+\section*{Languages}%
+\input{sections/cv-languages}
+
+\section*{Computing Languages}%
+\input{sections/cv-languages-computing}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section*{Publication Metrics}%
+\input{sections/cv-publications-metrics}
+
+\subsection*{Scholar Profiles}%
+\input{sections/cv-publications-profiles}
+
+\section*{Twelve Selected Publications}%
+\input{sections/cv-publications-selected}
+
+\section*{Full List of Publications}%
+\input{sections/cv-publications}
+
+\end{document}
