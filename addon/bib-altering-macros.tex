@@ -1,0 +1,162 @@
+\RequirePackage{fontawesome}
+\newcommand{\GGSRating}[1]{\href{http://gii-grin-scie-rating.scie.es}{\textsc{ggs}}~#1}
+\newcommand{\SJrRating}[1]{\href{https://www.scimagojr.com/}{\textsc{sjr}}~#1}
+\newcommand{\CORERating}[1]{\href{http://portal.core.edu.au/conf-ranks}{\textsc{core}}~#1}
+\newcommand{\ImpactF}[1]{\href{https://jcr.incites.thomsonreuters.com}{\textsc{jcr} \textsc{i.f}}~#1}
+\newcommand{\Award}[1]{\textbf{#1}}
+
+\newcommand{\GGSRatingWIco}[1]{\textcolor{gray}{\faListAlt}~{\GGSRating{#1}}}
+\newcommand{\SJrRatingWIco}[1]{\textcolor{gray}{\faListAlt}~{\SJrRating{#1}}}
+\newcommand{\CORERatingWIco}[1]{\textcolor{gray}{\faListAlt}~{\CORERating{#1}}}
+\newcommand{\AwardWIco}[1]{{\faStar}~{\Award{#1}}}
+\newcommand{\ImpactFWIco}[1]{\textcolor{gray}{\faBarChart}~{\ImpactF{#1}}}
+
+%\newcommand{\PresentedAt}[1] {\citetitle{#1} (published in \citeBookTitle{#1})~\cite{#1}}
+\newcommand{\CiteTitleCite}[1] {\citetitle{#1}~\cite{#1}}
+
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		\map{
+			\step[fieldsource=ggs]
+			\step[fieldset=usera,origfieldval]
+		}
+		\map{
+			\step[fieldsource=sjr]
+			\step[fieldset=userb,origfieldval]
+		}
+		\map{
+			\step[fieldsource=award]
+			\step[fieldset=userc,origfieldval]
+		}
+		\map{
+			\step[fieldsource=if]
+			\step[fieldset=userd,origfieldval]
+		}
+		\map{
+			\step[fieldsource=core]
+			\step[fieldset=usere,origfieldval]
+		}
+%		\map{
+%			\step[fieldset=editor, null]
+%		}
+	}
+}
+
+\DeclareFieldFormat{usera}{\GGSRatingWIco{#1}}
+\DeclareFieldFormat{userb}{\SJrRatingWIco{#1}}
+\DeclareFieldFormat{userc}{\AwardWIco{#1}}
+\DeclareFieldFormat{userd}{\ImpactFWIco{#1}}
+\DeclareFieldFormat{usere}{\CORERatingWIco{#1}}
+
+\AtEveryBibitem{ %% For the bibliography % https://tex.stackexchange.com/questions/111846/biblatex-2-custom-fields-only-one-is-working
+	%\AtEveryCitekey{% %% For citations
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% GGS rating
+		\iffieldundef{usera}{%
+		}{% \space\hspace{1ex} \textbf{No ggs!}}{%
+			\space\hspace{1ex}\printfield{usera}.%
+		}%
+	}%
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% SJR rating
+		\iffieldundef{userb}{%
+		}{% \space\hspace{1ex} \textbf{No sjr!}}{%
+			\space\hspace{1ex}\printfield{userb}.%
+		}%
+	}%
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% Impact factor
+		\iffieldundef{userd}{%
+		}{% \space\hspace{1ex} \textbf{No award!}}{%
+			\space\hspace{1ex}\printfield{userd}.%
+		}%
+	}%
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% CORE rating
+		\iffieldundef{usere}{%
+		}{% \space\hspace{1ex} \textbf{No award!}}{%
+			\space\hspace{1ex}\printfield{usere}.%
+		}%
+	}%
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% Award
+		\iffieldundef{userc}{%
+		}{% \space\hspace{1ex} \textbf{No award!}}{%
+			\space\hspace{1ex}\printfield{userc}.%
+		}%
+	}%
+}%
+\AtEveryCitekey{% %% For citations
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% GGS rating
+		\iffieldundef{usera}{%
+		}{% \space\hspace{1ex} \textbf{No ggs!}}{%
+			\space\hspace{1ex}\printfield{usera}%
+		}%
+	}%
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% SJR rating
+		\iffieldundef{userb}{%
+		}{% \space\hspace{1ex} \textbf{No sjr!}}{%
+			\space\hspace{1ex}\printfield{userb}%
+		}%
+	}%
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% Impact factor
+		\iffieldundef{userd}{%
+		}{% \space\hspace{1ex} \textbf{No award!}}{%
+			\space\hspace{1ex}\printfield{userd}%
+		}%
+	}%
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% CORE rating
+		\iffieldundef{usere}{%
+		}{% \space\hspace{1ex} \textbf{No award!}}{%
+			\space\hspace{1ex}\printfield{usere}%
+		}%
+	}%
+	\csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry %%%% Award
+		\iffieldundef{userc}{%
+		}{% \space\hspace{1ex} \textbf{No award!}}{%
+			\space\hspace{1ex}\printfield{userc}%
+		}%
+	}%
+	\clearfield{issue}%
+	\clearname{editor}%
+	\clearfield{isbn}%
+	\clearfield{volume}%
+	\clearfield{series}%
+}
+\defbibfilter{conference}{
+	type=incollection or
+	type=inproceedings
+}
+\defbibfilter{edited}{
+	type=proceedings or
+	type=book or
+	type=journal
+}
+
+\DeclareCiteCommand{\citeSJr}
+{}
+{\printfield[default]{userb}}
+{\multicitedelim}
+{}
+\DeclareCiteCommand{\citeImpactF}
+{}
+{\printfield[default]{userd}}
+{\multicitedelim}
+{}
+\DeclareCiteCommand{\citeGGS}
+{}
+{\printfield[default]{usera}}
+{\multicitedelim}
+{}
+\DeclareCiteCommand{\citeCORE}
+{}
+{\printfield[default]{usere}}
+{\multicitedelim}
+{}
+\DeclareCiteCommand{\citeAward}
+{}
+{\printfield[default]{userc}}
+{\multicitedelim}
+{}
+
+
+\DeclareCiteCommand{\citeBookTitle}
+{}
+{\printfield[default]{booktitle}}
+{\multicitedelim}
+{}
