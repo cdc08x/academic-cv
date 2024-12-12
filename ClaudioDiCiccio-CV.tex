@@ -33,15 +33,19 @@
 \author{\textcolor{darkgray}{Claudio} Di Ciccio}
 \title{Curriculum Vitae et Studiorum}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This variable is used to hide (if true) private details such as the home address or phone number
 \newif\ifpubliccv
 %\publiccvfalse
 \publiccvtrue
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This variable is used to include (if true) a page with key outputs
 \newif\ifkeyoutputs
 \keyoutputsfalse
-% \keyoutputstrue
+%\keyoutputstrue
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Managing the bib entries
 \usepackage[utf8]{inputenc}    % utf8 support
@@ -118,7 +122,7 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 \input{bib/edited.ids.tex}
 %
 \section*{Contact Data}
-\IfFileExists{sections/cv-personaldata}{%
+\IfFileExists{sections/cv-personaldataz}{%
 	\input{sections/cv-personaldata}}{%
 	\input{sections/cv-personaldata-excerpt}}
 

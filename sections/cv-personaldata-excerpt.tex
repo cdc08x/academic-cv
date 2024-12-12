@@ -1,0 +1,59 @@
+% !TeX program = lualatex
+% !BIB program = biber
+% !TeX spellcheck = en_UK
+% !TeX encoding = utf8
+% !TeX root = ../ClaudioDiCiccio-CV.tex
+%
+\CvEntryLblB{Name}%
+\CvEntryDesc{Claudio Di Ciccio}%
+
+\ifpubliccv \else
+\CvEntryLblB{Birth}%
+\CvEntryDesc{DD Month YYYY in City (Province or State), Country}%
+\fi%
+
+\CvEntryLblB{Citizenship}%
+\CvEntryDesc{Italian}%
+
+\CvEntryLblB{Address}%
+\CvEntryDesc{%
+\ifpubliccv%
+	{	{\faUniversity}
+		Utrecht University, Department of Information and Computing Sciences,\\
+		\phantom{\faUniversity} Princetonplein 5, 3584 CC Utrecht, Netherlands}%
+\else%
+	\CvEntrySubPerson{{\faHome}~\textbf{Private}
+		\newline%
+		Street name, number \\ 
+		ZIP City (Province or State), Country
+	}%
+	\CvEntrySubWork{{\faUniversity}~\textbf{Work} 
+	\newline%
+		Utrecht University \\ 
+		Department of Information and Computing Sciences \\
+		Princetonplein 5, 3584 CC Utrecht, Netherlands}%
+	\fi%
+}%
+
+\CvEntryLblB{Telephone}%
+\CvEntryDesc{%
+\ifpubliccv%
+	{ \CvPhoneUrl{+31 30 253 7540} }
+\else%
+	\CvEntrySubPerson{\ifpubliccv ~ \else \CvPhoneUrl{+43 123 4567 890} 
+		\fi}%
+	\CvEntrySubWork{ \CvPhoneUrl{+31 30 253 7540} }%
+\fi%
+}%
+
+\CvEntryLblB{Website}%
+\CvEntryDesc{%
+	\CvEntrySubPerson{\CvWebUrl{http://diciccio.net}{claudio.diciccio.net}}%
+	\CvEntrySubWork{\CvWebUrl{https://www.uu.nl/staff/CdiCiccio}{uu.nl/staff/CdiCiccio}}%
+}%
+
+\CvEntryLblB{E-mail}%
+\CvEntryDesc{%
+	\CvEntrySubPerson{\CvMailUrl{claudio@diciccio.net}}%
+	\CvEntrySubWork{\CvMailUrl{c.diciccio@uu.nl}}%
+}%
