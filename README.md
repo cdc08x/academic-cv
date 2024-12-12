@@ -1,4 +1,4 @@
-# Academic-cv
+# Claudio's Academic CV
 This repository contains my own Curriculum Vitae compiled with LaTeX. It is not yet a template, as it contains my own information, but feel free to fork it as you see fit.
 It requires the following packages installed:
 * [LuaTeX](https://www.luatex.org/)
