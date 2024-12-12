@@ -2,7 +2,7 @@
 \newcommand{\GGSRating}[1]{\href{http://gii-grin-scie-rating.scie.es}{\textsc{ggs}}~#1}
 \newcommand{\SJrRating}[1]{\href{https://www.scimagojr.com/}{\textsc{sjr}}~#1}
 \newcommand{\CORERating}[1]{\href{http://portal.core.edu.au/conf-ranks}{\textsc{core}}~#1}
-\newcommand{\ImpactF}[1]{\href{https://jcr.incites.thomsonreuters.com}{\textsc{jcr} \textsc{i.f}}~#1}
+\newcommand{\ImpactF}[1]{\href{https://jcr.clarivate.com/}{\textsc{jcr} \textsc{i.f}}~#1}
 \newcommand{\Award}[1]{\textbf{#1}}
 
 \newcommand{\GGSRatingWIco}[1]{\textcolor{gray}{\faListAlt}~{\GGSRating{#1}}}
@@ -121,6 +121,9 @@
 \defbibfilter{conference}{
 	type=incollection or
 	type=inproceedings
+}
+\defbibfilter{bookchapter}{
+	type=inbook
 }
 \defbibfilter{edited}{
 	type=proceedings or

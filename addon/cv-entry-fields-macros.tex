@@ -3,7 +3,7 @@
 \newcommand{\CvEntryLblB}[1]{\parbox[t]{0.125\textwidth}{\bf #1}}
 \newcommand{\CvEntryDate}[1]{\parbox[t]{0.125\textwidth}{#1}}
 \newcommand{\CvEntryDesc}[1]{\parbox[t]{0.85\textwidth}{#1}\par}
-\newcommand{\CvEntryDescShort}[1]{\parbox[t]{0.25\textwidth}{#1}\par}
+\newcommand{\CvEntryDescShort}[1]{\parbox[t]{0.25\textwidth}{#1}}
 \newcommand{\CvEntryEmpl}[1]{\parbox[t]{0.2\textwidth}{\em #1}}
 \newcommand{\CvEntryEmplWhere}[1]{\parbox[t]{0.65\textwidth}{#1}}
 \newcommand{\CvEntryRole}[1]{\parbox[t]{0.125\textwidth}{\em #1}}
@@ -14,5 +14,7 @@
 \newcommand{\CvEntrySubWork}[1]{\parbox[t]{0.45\textwidth}{#1}}
 \newcommand{\CvEntrySkill}[1]{\parbox[t]{0.125\textwidth}{\em #1}}
 \newcommand{\CvEntrySkillDesc}[1]{\parbox[t]{0.8\textwidth}{#1}\par}
-
+\newcommand{\CvFromToTwoLined}[2]{\hspace{3ex}$\Rsh$~{#2}\\ {#1}}
+\newcommand{\CvFromToNow}[1]{{#1}~\tikz[x=.71cm,baseline=-0.6ex]{\draw[>=stealth,line width=0.15mm,->] (0,0) -- (1,0);}} 
+%\newcommand{\CvFromToNow}[1]{\hspace{3ex}\phantom{$\Rsh$}~{#1}} % Nice alternative. Does not convince me, though.
 \newcommand{\CvDocTitle}[1]{``\hspace{-0.125em}\emph{#1}''}

@@ -38,6 +38,11 @@
 %\publiccvfalse
 \publiccvtrue
 
+% This variable is used to include (if true) a page with key outputs
+\newif\ifkeyoutputs
+\keyoutputsfalse
+% \keyoutputstrue
+
 % Managing the bib entries
 \usepackage[utf8]{inputenc}    % utf8 support
 \usepackage[T1]{fontenc}       % code for pdf file
@@ -58,12 +63,13 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 \usepackage{comment}
 \usepackage{multicol}
 \usepackage{academicons}
+\usepackage{mathabx}
 % Academicons has no icon for Scopus, so I make it up!
 \def\SimScopusIcon{\colorbox{black!32}{\makebox(5,6){\tiny{\color{white}\textsf{SC}}}}}
 
 
 \usepackage{fancyhdr}
-\usepackage[dvipsnames,usenames]{xcolor}
+\usepackage[dvipsnames,usenames,table,xcdraw]{xcolor}
 \usepackage{lastpage}
 \pagestyle{fancyplain}
 
@@ -74,6 +80,8 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{threeparttable}
+\usepackage[locale=UK]{siunitx}
+
 
 \usepackage[compact]{titlesec}
 \titlespacing{\section}{0pt}{10pt}{5pt}
@@ -104,59 +112,24 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 \maketitle
 %
 \input{bib/articles.ids.tex}
+\input{bib/bookchapter.ids.tex}
 \input{bib/conf.ids.tex}
 \input{bib/techrep.ids.tex}
 \input{bib/edited.ids.tex}
 %
-\section*{Personal Data}
-\CvEntryLblB{Name}%
-\CvEntryDesc{Claudio Di Ciccio}%
+\section*{Contact Data}
+\IfFileExists{sections/cv-personaldata}{%
+	\input{sections/cv-personaldata}}{%
+	\input{sections/cv-personaldata-excerpt}}
 
-\ifpubliccv \else
-	\CvEntryLblB{Birth}%
-	\CvEntryDesc{DD Month YYYY in City (Province or State), Country}%
-\fi%
-
-\CvEntryLblB{Citizenship}%
-\CvEntryDesc{Italian}%
-
-\CvEntryLblB{Address}%
-\CvEntryDesc{%
-	\CvEntrySubPerson{{\faHome}~\textbf{Personal}
-		\newline%
-		\ifpubliccv ~ \else Street name, number \\ ZIP City (Province or State), Country \fi%
-	}%
-	\CvEntrySubWork{{\faUniversity}~\textbf{Work}
-		\newline
-		Sapienza University of Rome \\ Department of Computer Science \\ Viale Regina Elena 295, 00161 Rome, Italy}%
-}%
-
-\CvEntryLblB{Telephone}%
-\CvEntryDesc{%
-	\CvEntrySubPerson{\ifpubliccv ~ \else \CvPhoneUrl{+43 123 4567 890} \fi}%
-	\CvEntrySubWork{ \CvPhoneUrl{+39 06 4925 5465} }%
-}%
-
-\CvEntryLblB{Website}%
-\CvEntryDesc{%
-	\CvEntrySubPerson{\CvWebUrl{http://diciccio.net}{diciccio.net}}%
-	\CvEntrySubWork{\CvWebUrl{https://www.di.uniroma1.it/en/docenti/di-ciccio-claudio}{di.uniroma1.it/en/docenti/di-ciccio-claudio}}%
-}%
-
-\CvEntryLblB{E-mail}%
-\CvEntryDesc{%
-	\CvEntrySubPerson{\CvMailUrl{claudio@diciccio.net}}%
-	\CvEntrySubWork{\CvMailUrl{claudio.diciccio@uniroma1.it}}%
-}%
+\section*{Professional Experience}
+\input{sections/cv-experience}
 
 \section*{Education}
 \input{sections/cv-education}
 
 \section*{Qualifications}
 \input{sections/cv-qualifications}
-
-\section*{Professional Experience}
-\input{sections/cv-experience}
 
 \section*{Honours and Awards}
 \input{sections/cv-awards}
@@ -176,26 +149,39 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 
 
 
-\section*{Invited Talks}%
-\input{sections/cv-invitedtalks}
+\ifkeyoutputs{%
+\section*{Seven Key Outputs}
+\input{sections/key-outputs}
+\newpage
+}%
+\fi
 
-\section*{Presentations at Conferences and Workshops}%
-\input{sections/cv-presentations}
 
-\section*{Program Committees and Referrals}%
-\input{sections/cv-pc-referrals}
+
 
 \section*{Memberships}%
 \input{sections/cv-memberships}
 
+\section*{Program Committees and Referrals}%
+\input{sections/cv-pc-referrals}
+
+\section*{Presentations and Keynotes}%
+\input{sections/cv-presentations}
+
+\section*{Invited Talks}%
+\input{sections/cv-invitedtalks}
+
+\section*{Service}
+\input{sections/cv-service}
+
 \section*{National and International Projects}%
 \input{sections/cv-projects}
 
-\section*{National and International Appointments}%
-\input{sections/cv-appointments}
-
 \section*{Technological Transfer and Entrepreneurship}%
 \input{sections/cv-transfer}
+
+\section*{National and International Appointments}%
+\input{sections/cv-appointments}
 
 \section*{Teaching Experience}%
 \input{sections/cv-teaching}
@@ -206,8 +192,8 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 \section*{Languages}%
 \input{sections/cv-languages}
 
-\section*{Computing Languages}%
-\input{sections/cv-languages-computing}
+%\section*{Computing Languages}%
+%\input{sections/cv-languages-computing}
 
 
 
@@ -235,6 +221,19 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 
 \section*{Twelve Selected Publications}%
 \input{sections/cv-publications-selected}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
 
 \section*{Full List of Publications}%
 \input{sections/cv-publications}
