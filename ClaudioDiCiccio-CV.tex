@@ -123,8 +123,10 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 %
 \section*{Contact Data}
 \IfFileExists{sections/cv-personaldata}{%
-	\input{sections/cv-personaldata}}{%
-	\input{sections/cv-personaldata-excerpt}}
+	\input{sections/cv-personaldata}}%
+{% Else
+	\input{sections/cv-personaldata-excerpt}%
+}
 
 \section*{Professional Experience}
 \input{sections/cv-experience}
@@ -191,7 +193,11 @@ bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
 \input{sections/cv-teaching}
 
 \section*{Supervision}%
-\input{sections/cv-supervisions}
+\IfFileExists{sections/cv-personaldata}{%
+	\input{sections/cv-supervisions}}%
+{% Else
+	\input{sections/cv-supervisions-excerpt}}%
+}
 
 \section*{Languages}%
 \input{sections/cv-languages}
